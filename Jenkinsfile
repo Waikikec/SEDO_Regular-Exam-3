@@ -27,21 +27,18 @@ pipeline {
         }
 
         stage('Restore Dependencies') {
-            when { branch 'main' }
             steps {
                 bat 'dotnet restore'
             }
         }
 
         stage('Build Application') {
-            when { branch 'main' }
             steps {
                 bat 'dotnet build --no-restore --configuration Release'
             }
         }
 
         stage('Run Tests') {
-            when { branch 'main' }
             steps {
                 bat 'dotnet test --no-build --verbosity normal'
             }
