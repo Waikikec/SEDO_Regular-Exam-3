@@ -1,26 +1,7 @@
 pipeline {
     agent any
 
-    environment {
-        DOTNET_VERSION = '6.0.x'
-    }
-
     stages {
-        stage('Checkout Repository') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Setup .NET SDK') {
-            steps {
-                bat '''
-                    echo Setting up .NET SDK %DOTNET_VERSION%
-                    dotnet --version
-                '''
-            }
-        }
-
         stage('Restore Dependencies') {
             steps {
                 bat 'dotnet restore'
